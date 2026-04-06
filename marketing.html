@@ -7,177 +7,354 @@
   <meta name="description" content="Marketing page for Zovada by Built Fitout Developers." />
   <style>
     :root{
-      --bg:#08101c;
-      --bg2:#152648;
-      --card:rgba(255,255,255,.08);
-      --stroke:rgba(255,255,255,.14);
-      --text:#eef5ff;
-      --muted:#bcc8df;
-      --accent:#77f2bf;
-      --accent2:#75abff;
-      --accent3:#df90ff;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --bg:#07111e;
+      --bg2:#0c1930;
+      --panel:rgba(255,255,255,.07);
+      --stroke:rgba(255,255,255,.10);
+      --text:#eef4ff;
+      --muted:#b8c6de;
+      --accent:#7df0c6;
+      --accent2:#89a9ff;
+      --accent3:#c89bff;
+      --shadow:0 18px 45px rgba(0,0,0,.28);
       --radius:24px;
+      --max:1020px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:Inter, system-ui, sans-serif;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      min-height:100vh;
       background:
-        radial-gradient(circle at 14% 16%, rgba(119,242,191,.16), transparent 22%),
-        radial-gradient(circle at 85% 15%, rgba(117,171,255,.18), transparent 22%),
-        radial-gradient(circle at 40% 92%, rgba(223,144,255,.18), transparent 28%),
+        radial-gradient(circle at 12% 18%, rgba(125,240,198,.17), transparent 22%),
+        radial-gradient(circle at 85% 16%, rgba(137,169,255,.15), transparent 22%),
+        radial-gradient(circle at 50% 88%, rgba(200,155,255,.12), transparent 24%),
         linear-gradient(135deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    .container{width:min(1050px, calc(100% - 24px));margin:0 auto;padding:18px 0 46px}
-    .nav,.card{
-      background:var(--card);
+
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:radial-gradient(circle at center, black 55%, transparent 100%);
+      opacity:.85;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 24px));
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      padding:14px 0 10px;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(7,17,30,.78), rgba(7,17,30,0));
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
       border:1px solid var(--stroke);
-      backdrop-filter:blur(14px);
+      border-radius:22px;
+      background:rgba(13,24,43,.72);
+      backdrop-filter:blur(16px);
       box-shadow:var(--shadow);
     }
-    .nav{
-      border-radius:22px;
-      padding:14px;
+
+    .brand-title{
+      margin:0;
+      font-size:1.08rem;
+      font-weight:700;
+      letter-spacing:-.02em;
+      line-height:1.2;
+    }
+
+    .brand-subtitle{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.35;
+    }
+
+    .nav-links{
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
       flex-wrap:wrap;
-      margin-bottom:20px;
+      gap:10px;
+      justify-content:flex-end;
     }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
-    .logo{
-      width:42px;height:42px;border-radius:14px;
-      display:grid;place-items:center;
-      color:#09111e;font-weight:900;
-      background:conic-gradient(from 210deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-size:.95rem;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      transition:.2s ease;
+      white-space:nowrap;
     }
-    .links{display:flex;flex-wrap:wrap;gap:10px}
-    .links a,.button{
-      text-decoration:none;color:var(--text);
-      padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      transition:.25s ease;
+
+    .nav-links a:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.09);
     }
-    .links a:hover,.button:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+
     .hero{
       display:grid;
-      grid-template-columns:1.08fr .92fr;
-      gap:18px;
+      grid-template-columns:1.06fr .94fr;
+      gap:16px;
+      padding:22px 0 18px;
     }
+
     .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.06));
+      border:1px solid var(--stroke);
       border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
       padding:24px;
     }
+
     h1{
       margin:0 0 12px;
-      font-size:clamp(2rem, 6vw, 3.8rem);
-      line-height:1.02;
-      letter-spacing:-0.03em;
+      font-size:clamp(2rem, 5vw, 3.6rem);
+      line-height:1.03;
+      letter-spacing:-.04em;
     }
-    h2{margin:0 0 10px}
+
+    h2{
+      margin:0 0 14px;
+      font-size:1.25rem;
+      line-height:1.3;
+    }
+
     .gradient{
-      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+      background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
       background-clip:text;
+      color:transparent;
     }
-    .lead,.muted{
+
+    .lead{
+      margin:0;
       color:var(--muted);
-      line-height:1.78;
+      line-height:1.75;
+      font-size:1.03rem;
     }
-    .stack{display:grid;gap:18px;margin-top:18px}
+
+    .stack{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
     .info{
-      padding:16px;
+      padding:16px 18px;
       border-radius:18px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
     }
-    .info strong{display:block;margin-bottom:8px}
+
+    .info strong{
+      display:block;
+      margin-bottom:8px;
+      line-height:1.35;
+    }
+
+    .info div{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
     .timeline{
       display:grid;
       gap:14px;
     }
+
     .step{
-      padding:16px;
+      padding:16px 18px;
       border-radius:18px;
-      border:1px solid rgba(255,255,255,.1);
-      background:linear-gradient(135deg, rgba(119,242,191,.07), rgba(117,171,255,.07));
-      position:relative;
-      overflow:hidden;
+      background:linear-gradient(135deg, rgba(125,240,198,.08), rgba(137,169,255,.08));
+      border:1px solid rgba(255,255,255,.08);
     }
-    .step::after{
-      content:"";
-      position:absolute;
-      right:-30px;
-      top:-20px;
-      width:90px;
-      height:90px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(223,144,255,.25), transparent 70%);
-    }
+
     .step b{
-      display:inline-grid;
-      place-items:center;
-      width:34px;height:34px;
-      border-radius:50%;
-      margin-bottom:10px;
-      background:rgba(255,255,255,.12);
+      display:inline-block;
+      margin-bottom:8px;
+      font-size:1rem;
     }
+
+    .step strong{
+      display:block;
+      margin-bottom:7px;
+      line-height:1.35;
+    }
+
+    .step div{
+      color:var(--muted);
+      line-height:1.68;
+    }
+
     .cta{
-      margin-top:18px;
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
+      gap:12px;
+      margin-top:18px;
     }
-    .footer{
-      margin-top:24px;
+
+    .button{
+      text-decoration:none;
+      color:var(--text);
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      transition:.2s ease;
+      font-size:.96rem;
+      text-align:center;
+    }
+
+    .button:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.10);
+    }
+
+    footer{
+      padding:16px 0 30px;
       text-align:center;
       color:var(--muted);
-      font-size:.95rem;
+      font-size:.97rem;
+      line-height:1.6;
     }
-    @media (max-width: 880px){
-      .hero{grid-template-columns:1fr}
+
+    @media (max-width: 860px){
+      .hero{
+        grid-template-columns:1fr;
+      }
     }
-    @media (max-width: 640px){
-      .links{width:100%}
-      .links a{flex:1 1 calc(50% - 10px);text-align:center}
-      .cta{flex-direction:column}
-      .cta .button{text-align:center}
+
+    @media (max-width: 720px){
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        width:100%;
+        justify-content:flex-start;
+      }
+
+      .nav-links a{
+        flex:1 1 calc(50% - 10px);
+        text-align:center;
+      }
+
+      .card{
+        padding:20px 16px;
+      }
+    }
+
+    @media (max-width: 520px){
+      .container{
+        width:min(100% - 16px, var(--max));
+      }
+
+      .site-header{
+        padding:10px 0 8px;
+      }
+
+      .nav{
+        padding:14px;
+        border-radius:18px;
+      }
+
+      .nav-links{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        width:100%;
+      }
+
+      .nav-links a{
+        padding:11px 10px;
+        font-size:.92rem;
+      }
+
+      h1{
+        font-size:2.25rem;
+      }
+
+      .lead,
+      .info div,
+      .step div{
+        font-size:1rem;
+      }
+
+      .cta{
+        flex-direction:column;
+      }
+
+      .button{
+        width:100%;
+      }
+
+      footer{
+        font-size:.94rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <nav class="nav">
-      <div class="brand">
-        <div class="logo">Z</div>
-        <div>Zovada Marketing</div>
-      </div>
-      <div class="links">
-        <a href="index.html">Home</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="support.html">Support</a>
-        <a href="marketing.html">Marketing</a>
-      </div>
-    </nav>
+  <div class="grid-bg"></div>
 
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <div>
+          <p class="brand-title">Zovada</p>
+          <p class="brand-subtitle">Built Fitout Developers</p>
+        </div>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+          <a href="marketing.html">Marketing</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
     <section class="hero">
       <div class="card">
         <h1><span class="gradient">Zovada</span> by Built Fitout Developers</h1>
         <p class="lead">
           Zovada is being developed with care, honesty, and long-term commitment.
-          This page explains the spirit behind the project and the value the developer aims to create.
+          This page explains the spirit behind the project and the value the developer
+          aims to create.
         </p>
 
         <div class="stack">
           <div class="info">
             <strong>Early-stage independent development</strong>
-            <div class="muted">
+            <div>
               Built Fitout Developers is a beginner developer profile working hard to build
               a reliable and meaningful application experience.
             </div>
@@ -185,14 +362,14 @@
 
           <div class="info">
             <strong>No paid features at the moment</strong>
-            <div class="muted">
+            <div>
               At this stage, Zovada does not include paid functions, premium access, or subscriptions.
             </div>
           </div>
 
           <div class="info">
             <strong>Future monetization plans</strong>
-            <div class="muted">
+            <div>
               In the future, paid features or subscriptions may be introduced to support
               ongoing development and help generate sustainable revenue.
             </div>
@@ -200,7 +377,7 @@
 
           <div class="info">
             <strong>Focus on value</strong>
-            <div class="muted">
+            <div>
               The goal is not only to publish an app, but to steadily improve it,
               make it more useful, and bring real value to users over time.
             </div>
@@ -208,52 +385,53 @@
         </div>
 
         <div class="cta">
-          <a class="button" href="support.html">Contact Developer</a>
+          <a class="button" href="support.html">Support Page</a>
           <a class="button" href="privacy.html">Read Privacy Policy</a>
         </div>
       </div>
 
-      <div class="card">
+      <aside class="card">
         <h2>Project direction</h2>
+
         <div class="timeline">
           <div class="step">
-            <b>1</b>
-            <div><strong>Build trust</strong></div>
-            <div class="muted">
+            <b>01</b>
+            <strong>Build trust</strong>
+            <div>
               Present the app and developer profile in a transparent and easy-to-review way.
             </div>
           </div>
 
           <div class="step">
-            <b>2</b>
-            <div><strong>Improve quality</strong></div>
-            <div class="muted">
+            <b>02</b>
+            <strong>Improve quality</strong>
+            <div>
               Continue refining the app, improving stability, presentation, and user experience.
             </div>
           </div>
 
           <div class="step">
-            <b>3</b>
-            <div><strong>Add useful features</strong></div>
-            <div class="muted">
+            <b>03</b>
+            <strong>Add useful features</strong>
+            <div>
               Expand functionality only when it adds genuine benefit and supports the product vision.
             </div>
           </div>
 
           <div class="step">
-            <b>4</b>
-            <div><strong>Create sustainability</strong></div>
-            <div class="muted">
+            <b>04</b>
+            <strong>Create sustainability</strong>
+            <div>
               Introduce future monetization carefully and transparently as the project matures.
             </div>
           </div>
         </div>
-      </div>
+      </aside>
     </section>
 
-    <div class="footer">
+    <footer>
       © 2026 Built Fitout Developers — Zovada Marketing Page
-    </div>
-  </div>
+    </footer>
+  </main>
 </body>
 </html>
