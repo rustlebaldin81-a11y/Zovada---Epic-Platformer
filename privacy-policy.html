@@ -1,80 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy | Zovada</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#141e30,#243b55);
-color:#fff;
-padding:20px;
-}
-.container{
-max-width:800px;
-margin:auto;
-background:rgba(255,255,255,0.08);
-padding:40px;
-border-radius:20px;
-backdrop-filter:blur(12px);
-box-shadow:0 8px 32px rgba(0,0,0,0.4);
-}
-h1{
-text-align:center;
-margin-bottom:30px;
-}
-p{
-line-height:1.7;
-margin-bottom:15px;
-color:#ddd;
-}
-a{color:#00f5a0;text-decoration:none}
-@media(max-width:600px){
-.container{padding:25px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Zovada</title>
+  <meta name="description" content="Privacy Policy for Zovada by Built Fitout Developers." />
+  <style>
+    :root{
+      --bg:#08111f;
+      --bg2:#11223c;
+      --card:rgba(255,255,255,0.08);
+      --stroke:rgba(255,255,255,0.14);
+      --text:#eef4ff;
+      --muted:#b8c6de;
+      --accent:#78f0bf;
+      --accent2:#79a9ff;
+      --accent3:#dd90ff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(120,240,191,.17), transparent 24%),
+        radial-gradient(circle at 90% 15%, rgba(121,169,255,.18), transparent 24%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+    }
+    .container{width:min(960px, calc(100% - 24px)); margin:0 auto; padding:18px 0 44px}
+    .nav, .card{
+      border:1px solid var(--stroke);
+      background:var(--card);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+    }
+    .nav{
+      border-radius:22px;
+      padding:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:22px;
+      position:sticky;
+      top:12px;
+      z-index:10;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background:conic-gradient(from 210deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+      color:#08111f;
+      font-weight:900;
+    }
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    a{
+      color:var(--text);
+      text-decoration:none;
+    }
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.05);
+      transition:.25s ease;
+    }
+    .pill:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12)}
+    .hero{
+      padding:28px 6px 10px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(2rem, 6vw, 3.6rem);
+      line-height:1.02;
+      letter-spacing:-0.03em;
+    }
+    .gradient{
+      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .lead{
+      color:var(--muted);
+      line-height:1.8;
+      max-width:65ch;
+      margin:0;
+    }
+    .card{
+      border-radius:var(--radius);
+      padding:24px;
+      margin-top:18px;
+    }
+    .badge{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:14px;
+    }
+    .policy-list{
+      display:grid;
+      gap:14px;
+      margin-top:14px;
+    }
+    .policy-item{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+    }
+    .policy-item h3{
+      margin:0 0 8px;
+      font-size:1.05rem;
+    }
+    .policy-item p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.75;
+    }
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    @media (max-width: 640px){
+      .links{width:100%}
+      .pill{flex:1 1 calc(50% - 10px); text-align:center}
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<h1>Privacy Policy</h1>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo">Z</div>
+        <div>Zovada Privacy Policy</div>
+      </div>
+      <div class="links">
+        <a class="pill" href="index.html">Home</a>
+        <a class="pill" href="privacy.html">Privacy</a>
+        <a class="pill" href="support.html">Support</a>
+        <a class="pill" href="marketing.html">Marketing</a>
+      </div>
+    </nav>
 
-<p><strong>Application:</strong> Zovada</p>
-<p><strong>Developer:</strong> Built Fitout Developers</p>
+    <section class="hero">
+      <h1><span class="gradient">Privacy Policy</span></h1>
+      <p class="lead">
+        This Privacy Policy applies to <strong>Zovada</strong>, developed by
+        <strong>Built Fitout Developers</strong>.
+        We believe in transparency and simplicity.
+      </p>
+    </section>
 
-<p>
-We respect your privacy.
-</p>
+    <section class="card">
+      <div class="badge">Effective and public statement</div>
+      <div class="policy-list">
+        <div class="policy-item">
+          <h3>No data collection</h3>
+          <p>
+            Zovada does not collect personal data, usage data, device data, location data,
+            or any other form of user information.
+          </p>
+        </div>
 
-<p>
-Zovada does not collect, store, process, or share any personal data.
-</p>
+        <div class="policy-item">
+          <h3>No data storage</h3>
+          <p>
+            We do not store user data on our servers, in cloud systems, or in any private database.
+          </p>
+        </div>
 
-<p>
-The application operates without gathering personal information such as name, email address, location data, device identifiers, or usage analytics.
-</p>
+        <div class="policy-item">
+          <h3>No data sharing</h3>
+          <p>
+            We do not sell, transfer, distribute, or share user data with third parties because
+            we do not collect such data in the first place.
+          </p>
+        </div>
 
-<p>
-We do not use third-party analytics services, advertising SDKs, tracking tools, or data monetization systems.
-</p>
+        <div class="policy-item">
+          <h3>No account profiling</h3>
+          <p>
+            Zovada does not create user profiles, analytics profiles, advertising profiles,
+            or behavioral tracking records.
+          </p>
+        </div>
 
-<p>
-Since no data is collected, no data is stored, processed, or shared with third parties.
-</p>
+        <div class="policy-item">
+          <h3>Children's privacy</h3>
+          <p>
+            Since the app does not collect or process any personal information, it does not
+            maintain any database of information related to children or adults.
+          </p>
+        </div>
 
-<p>
-If you have any questions regarding this Privacy Policy, you may contact us at:
-<br><strong>rustlebaldin81@gmail.com</strong>
-</p>
+        <div class="policy-item">
+          <h3>Policy updates</h3>
+          <p>
+            If this privacy approach changes in the future, this page will be updated clearly
+            and publicly before any new data-related practices are introduced.
+          </p>
+        </div>
 
-<p>
-This policy may be updated in the future if the functionality of the application changes.
-</p>
+        <div class="policy-item">
+          <h3>Contact</h3>
+          <p>
+            If you have any questions regarding this Privacy Policy, you can contact the developer at:
+            <a href="mailto:rustlebaldin81@gmail.com">rustlebaldin81@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
 
-<p>Last updated: 2026</p>
-
-</div>
+    <div class="footer">
+      © 2026 Built Fitout Developers — Zovada
+    </div>
+  </div>
 </body>
 </html>
