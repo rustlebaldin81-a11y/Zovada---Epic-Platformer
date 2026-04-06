@@ -7,173 +7,289 @@
   <meta name="description" content="Privacy Policy for Zovada by Built Fitout Developers." />
   <style>
     :root{
-      --bg:#08111f;
-      --bg2:#11223c;
-      --card:rgba(255,255,255,0.08);
-      --stroke:rgba(255,255,255,0.14);
+      --bg:#07111e;
+      --bg2:#0c1930;
+      --panel:rgba(255,255,255,.07);
+      --stroke:rgba(255,255,255,.10);
       --text:#eef4ff;
       --muted:#b8c6de;
-      --accent:#78f0bf;
-      --accent2:#79a9ff;
-      --accent3:#dd90ff;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --accent:#7df0c6;
+      --accent2:#89a9ff;
+      --accent3:#c89bff;
+      --shadow:0 18px 45px rgba(0,0,0,.28);
       --radius:24px;
+      --max:980px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:Inter, system-ui, sans-serif;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      min-height:100vh;
       background:
-        radial-gradient(circle at 10% 20%, rgba(120,240,191,.17), transparent 24%),
-        radial-gradient(circle at 90% 15%, rgba(121,169,255,.18), transparent 24%),
+        radial-gradient(circle at 12% 18%, rgba(125,240,198,.17), transparent 22%),
+        radial-gradient(circle at 85% 16%, rgba(137,169,255,.15), transparent 22%),
+        radial-gradient(circle at 50% 88%, rgba(200,155,255,.12), transparent 24%),
         linear-gradient(135deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
     }
-    .container{width:min(960px, calc(100% - 24px)); margin:0 auto; padding:18px 0 44px}
-    .nav, .card{
+
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:radial-gradient(circle at center, black 55%, transparent 100%);
+      opacity:.85;
+    }
+
+    .container{
+      width:min(var(--max), calc(100% - 24px));
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      padding:14px 0 10px;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(7,17,30,.78), rgba(7,17,30,0));
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
       border:1px solid var(--stroke);
-      background:var(--card);
-      backdrop-filter:blur(14px);
+      border-radius:22px;
+      background:rgba(13,24,43,.72);
+      backdrop-filter:blur(16px);
       box-shadow:var(--shadow);
     }
-    .nav{
-      border-radius:22px;
-      padding:14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:22px;
-      position:sticky;
-      top:12px;
-      z-index:10;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
+
+    .brand-title{
+      margin:0;
+      font-size:1.08rem;
       font-weight:700;
+      letter-spacing:-.02em;
+      line-height:1.2;
     }
-    .logo{
-      width:42px;height:42px;border-radius:14px;
-      display:grid;place-items:center;
-      background:conic-gradient(from 210deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
-      color:#08111f;
-      font-weight:900;
+
+    .brand-subtitle{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:.92rem;
+      line-height:1.35;
     }
-    .links{
+
+    .nav-links{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
+      justify-content:flex-end;
     }
-    a{
-      color:var(--text);
+
+    .nav-links a{
       text-decoration:none;
-    }
-    .pill{
+      color:var(--text);
+      font-size:.95rem;
       padding:10px 14px;
       border-radius:999px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.05);
-      transition:.25s ease;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      transition:.2s ease;
+      white-space:nowrap;
     }
-    .pill:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12)}
+
+    .nav-links a:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.09);
+    }
+
     .hero{
-      padding:28px 6px 10px;
+      padding:22px 0 8px;
     }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:.86rem;
+      margin-bottom:14px;
+    }
+
     h1{
       margin:0 0 12px;
-      font-size:clamp(2rem, 6vw, 3.6rem);
-      line-height:1.02;
-      letter-spacing:-0.03em;
+      font-size:clamp(2rem, 5vw, 3.6rem);
+      line-height:1.03;
+      letter-spacing:-.04em;
     }
+
     .gradient{
-      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+      background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
       background-clip:text;
+      color:transparent;
     }
+
     .lead{
-      color:var(--muted);
-      line-height:1.8;
-      max-width:65ch;
-      margin:0;
-    }
-    .card{
-      border-radius:var(--radius);
-      padding:24px;
-      margin-top:18px;
-    }
-    .badge{
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.12);
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:14px;
-    }
-    .policy-list{
-      display:grid;
-      gap:14px;
-      margin-top:14px;
-    }
-    .policy-item{
-      padding:16px;
-      border-radius:18px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.1);
-    }
-    .policy-item h3{
-      margin:0 0 8px;
-      font-size:1.05rem;
-    }
-    .policy-item p{
       margin:0;
       color:var(--muted);
       line-height:1.75;
+      font-size:1.03rem;
+      max-width:64ch;
     }
-    .footer{
-      margin-top:24px;
+
+    .card{
+      margin-top:16px;
+      padding:24px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.06));
+      border:1px solid var(--stroke);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+
+    .policy-list{
+      display:grid;
+      gap:14px;
+    }
+
+    .policy-item{
+      padding:16px 18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .policy-item h3{
+      margin:0 0 8px;
+      font-size:1.03rem;
+      line-height:1.35;
+    }
+
+    .policy-item p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.72;
+      font-size:1rem;
+      word-break:break-word;
+    }
+
+    footer{
+      padding:18px 0 30px;
       text-align:center;
       color:var(--muted);
-      font-size:.95rem;
+      font-size:.97rem;
+      line-height:1.6;
     }
-    @media (max-width: 640px){
-      .links{width:100%}
-      .pill{flex:1 1 calc(50% - 10px); text-align:center}
+
+    @media (max-width: 720px){
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        width:100%;
+        justify-content:flex-start;
+      }
+
+      .nav-links a{
+        flex:1 1 calc(50% - 10px);
+        text-align:center;
+      }
+
+      .card{
+        padding:20px 16px;
+      }
+    }
+
+    @media (max-width: 520px){
+      .container{
+        width:min(100% - 16px, var(--max));
+      }
+
+      .site-header{
+        padding:10px 0 8px;
+      }
+
+      .nav{
+        padding:14px;
+        border-radius:18px;
+      }
+
+      .nav-links{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        width:100%;
+      }
+
+      .nav-links a{
+        padding:11px 10px;
+        font-size:.92rem;
+      }
+
+      h1{
+        font-size:2.3rem;
+      }
+
+      .lead,
+      .policy-item p{
+        font-size:1rem;
+      }
+
+      footer{
+        font-size:.94rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <nav class="nav">
-      <div class="brand">
-        <div class="logo">Z</div>
-        <div>Zovada Privacy Policy</div>
-      </div>
-      <div class="links">
-        <a class="pill" href="index.html">Home</a>
-        <a class="pill" href="privacy.html">Privacy</a>
-        <a class="pill" href="support.html">Support</a>
-        <a class="pill" href="marketing.html">Marketing</a>
-      </div>
-    </nav>
+  <div class="grid-bg"></div>
 
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <div>
+          <p class="brand-title">Zovada</p>
+          <p class="brand-subtitle">Built Fitout Developers</p>
+        </div>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+          <a href="marketing.html">Marketing</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
     <section class="hero">
+      <div class="eyebrow">Effective and public statement</div>
       <h1><span class="gradient">Privacy Policy</span></h1>
       <p class="lead">
         This Privacy Policy applies to <strong>Zovada</strong>, developed by
-        <strong>Built Fitout Developers</strong>.
-        We believe in transparency and simplicity.
+        <strong>Built Fitout Developers</strong>. We believe in transparency and simplicity.
       </p>
     </section>
 
     <section class="card">
-      <div class="badge">Effective and public statement</div>
       <div class="policy-list">
         <div class="policy-item">
           <h3>No data collection</h3>
@@ -199,7 +315,7 @@
         </div>
 
         <div class="policy-item">
-          <h3>No account profiling</h3>
+          <h3>No profiling or tracking</h3>
           <p>
             Zovada does not create user profiles, analytics profiles, advertising profiles,
             or behavioral tracking records.
@@ -224,17 +340,14 @@
 
         <div class="policy-item">
           <h3>Contact</h3>
-          <p>
-            If you have any questions regarding this Privacy Policy, you can contact the developer at:
-            <a href="mailto:rustlebaldin81@gmail.com">rustlebaldin81@gmail.com</a>
-          </p>
+          <p>Developer contact: rustlebaldin81@gmail.com</p>
         </div>
       </div>
     </section>
 
-    <div class="footer">
+    <footer>
       © 2026 Built Fitout Developers — Zovada
-    </div>
-  </div>
+    </footer>
+  </main>
 </body>
 </html>
