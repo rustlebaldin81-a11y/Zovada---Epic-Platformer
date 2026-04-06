@@ -1,84 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Zovada | Built Fitout Developers</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-<style>
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#000428,#004e92);
-color:#fff;
-padding:20px;
-}
-.container{
-max-width:900px;
-margin:auto;
-background:rgba(255,255,255,0.08);
-padding:50px;
-border-radius:25px;
-backdrop-filter:blur(15px);
-box-shadow:0 10px 40px rgba(0,0,0,0.5);
-animation:fadeIn 1.2s ease-in-out;
-}
-h1{
-text-align:center;
-margin-bottom:30px;
-font-size:2.3rem;
-}
-p{
-line-height:1.8;
-margin-bottom:18px;
-color:#e6e6e6;
-}
-.highlight{
-color:#00f5a0;
-font-weight:600;
-}
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
-@media(max-width:600px){
-.container{padding:25px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing | Zovada</title>
+  <meta name="description" content="Marketing page for Zovada by Built Fitout Developers." />
+  <style>
+    :root{
+      --bg:#08101c;
+      --bg2:#152648;
+      --card:rgba(255,255,255,.08);
+      --stroke:rgba(255,255,255,.14);
+      --text:#eef5ff;
+      --muted:#bcc8df;
+      --accent:#77f2bf;
+      --accent2:#75abff;
+      --accent3:#df90ff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 14% 16%, rgba(119,242,191,.16), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(117,171,255,.18), transparent 22%),
+        radial-gradient(circle at 40% 92%, rgba(223,144,255,.18), transparent 28%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+    }
+    .container{width:min(1050px, calc(100% - 24px));margin:0 auto;padding:18px 0 46px}
+    .nav,.card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+    }
+    .nav{
+      border-radius:22px;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700}
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      color:#09111e;font-weight:900;
+      background:conic-gradient(from 210deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+    }
+    .links{display:flex;flex-wrap:wrap;gap:10px}
+    .links a,.button{
+      text-decoration:none;color:var(--text);
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      transition:.25s ease;
+    }
+    .links a:hover,.button:hover{transform:translateY(-2px);background:rgba(255,255,255,.12)}
+    .hero{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:18px;
+    }
+    .card{
+      border-radius:var(--radius);
+      padding:24px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(2rem, 6vw, 3.8rem);
+      line-height:1.02;
+      letter-spacing:-0.03em;
+    }
+    h2{margin:0 0 10px}
+    .gradient{
+      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .lead,.muted{
+      color:var(--muted);
+      line-height:1.78;
+    }
+    .stack{display:grid;gap:18px;margin-top:18px}
+    .info{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .info strong{display:block;margin-bottom:8px}
+    .timeline{
+      display:grid;
+      gap:14px;
+    }
+    .step{
+      padding:16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(135deg, rgba(119,242,191,.07), rgba(117,171,255,.07));
+      position:relative;
+      overflow:hidden;
+    }
+    .step::after{
+      content:"";
+      position:absolute;
+      right:-30px;
+      top:-20px;
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(223,144,255,.25), transparent 70%);
+    }
+    .step b{
+      display:inline-grid;
+      place-items:center;
+      width:34px;height:34px;
+      border-radius:50%;
+      margin-bottom:10px;
+      background:rgba(255,255,255,.12);
+    }
+    .cta{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .links{width:100%}
+      .links a{flex:1 1 calc(50% - 10px);text-align:center}
+      .cta{flex-direction:column}
+      .cta .button{text-align:center}
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo">Z</div>
+        <div>Zovada Marketing</div>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="marketing.html">Marketing</a>
+      </div>
+    </nav>
 
-<h1>About Zovada</h1>
+    <section class="hero">
+      <div class="card">
+        <h1><span class="gradient">Zovada</span> by Built Fitout Developers</h1>
+        <p class="lead">
+          Zovada is being developed with care, honesty, and long-term commitment.
+          This page explains the spirit behind the project and the value the developer aims to create.
+        </p>
 
-<p>
-Zovada is developed by <span class="highlight">Built Fitout Developers</span>.
-</p>
+        <div class="stack">
+          <div class="info">
+            <strong>Early-stage independent development</strong>
+            <div class="muted">
+              Built Fitout Developers is a beginner developer profile working hard to build
+              a reliable and meaningful application experience.
+            </div>
+          </div>
 
-<p>
-We are an independent and growing developer focused on creating meaningful and practical digital products.
-</p>
+          <div class="info">
+            <strong>No paid features at the moment</strong>
+            <div class="muted">
+              At this stage, Zovada does not include paid functions, premium access, or subscriptions.
+            </div>
+          </div>
 
-<p>
-Currently, Zovada does not include paid features or subscriptions.
-Our priority is building quality, stability, and real user value first.
-</p>
+          <div class="info">
+            <strong>Future monetization plans</strong>
+            <div class="muted">
+              In the future, paid features or subscriptions may be introduced to support
+              ongoing development and help generate sustainable revenue.
+            </div>
+          </div>
 
-<p>
-In the future, we may introduce optional premium features or subscription models
-to support ongoing development and ensure sustainable growth.
-</p>
+          <div class="info">
+            <strong>Focus on value</strong>
+            <div class="muted">
+              The goal is not only to publish an app, but to steadily improve it,
+              make it more useful, and bring real value to users over time.
+            </div>
+          </div>
+        </div>
 
-<p>
-As a beginner developer, I am deeply committed to improving the application,
-listening to user feedback, and delivering consistent updates.
-</p>
+        <div class="cta">
+          <a class="button" href="support.html">Contact Developer</a>
+          <a class="button" href="privacy.html">Read Privacy Policy</a>
+        </div>
+      </div>
 
-<p>
-Our mission is simple:
-<span class="highlight">Create value. Improve constantly. Stay transparent.</span>
-</p>
+      <div class="card">
+        <h2>Project direction</h2>
+        <div class="timeline">
+          <div class="step">
+            <b>1</b>
+            <div><strong>Build trust</strong></div>
+            <div class="muted">
+              Present the app and developer profile in a transparent and easy-to-review way.
+            </div>
+          </div>
 
-</div>
+          <div class="step">
+            <b>2</b>
+            <div><strong>Improve quality</strong></div>
+            <div class="muted">
+              Continue refining the app, improving stability, presentation, and user experience.
+            </div>
+          </div>
+
+          <div class="step">
+            <b>3</b>
+            <div><strong>Add useful features</strong></div>
+            <div class="muted">
+              Expand functionality only when it adds genuine benefit and supports the product vision.
+            </div>
+          </div>
+
+          <div class="step">
+            <b>4</b>
+            <div><strong>Create sustainability</strong></div>
+            <div class="muted">
+              Introduce future monetization carefully and transparently as the project matures.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Built Fitout Developers — Zovada Marketing Page
+    </div>
+  </div>
 </body>
 </html>
