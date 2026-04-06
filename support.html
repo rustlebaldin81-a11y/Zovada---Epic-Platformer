@@ -1,61 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support | Zovada</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#1f1c2c,#928dab);
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
-}
-.card{
-background:rgba(255,255,255,0.1);
-padding:40px;
-border-radius:20px;
-max-width:700px;
-text-align:center;
-backdrop-filter:blur(15px);
-box-shadow:0 8px 32px rgba(0,0,0,0.4);
-}
-h1{margin-bottom:20px}
-p{line-height:1.6;color:#eee;margin-bottom:15px}
-.email{
-font-size:1.2rem;
-color:#00f5a0;
-}
-@media(max-width:600px){
-.card{padding:25px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support | Zovada</title>
+  <meta name="description" content="Support page for Zovada by Built Fitout Developers." />
+  <style>
+    :root{
+      --bg:#0a1020;
+      --bg2:#17284a;
+      --card:rgba(255,255,255,0.08);
+      --stroke:rgba(255,255,255,0.14);
+      --text:#eef3ff;
+      --muted:#bcc9df;
+      --accent:#76f2bc;
+      --accent2:#7aaeff;
+      --accent3:#df95ff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(118,242,188,.18), transparent 24%),
+        radial-gradient(circle at 85% 20%, rgba(122,174,255,.17), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(223,149,255,.16), transparent 30%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      min-height:100vh;
+    }
+    .container{width:min(1000px, calc(100% - 24px)); margin:0 auto; padding:18px 0 42px}
+    .nav,.card{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+    }
+    .nav{
+      border-radius:22px;
+      padding:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:700;
+    }
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      font-weight:900;color:#09101d;
+      background:conic-gradient(from 220deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+    }
+    .links{display:flex;flex-wrap:wrap;gap:10px}
+    .links a,.button{
+      text-decoration:none;color:var(--text);
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.05);
+      transition:.25s ease;
+    }
+    .links a:hover,.button:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12)}
+    .hero{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:18px;
+      margin-top:10px;
+    }
+    .card{border-radius:24px;padding:24px}
+    h1{
+      margin:0 0 12px;
+      font-size:clamp(2rem, 6vw, 3.5rem);
+      line-height:1.02;
+      letter-spacing:-0.03em;
+    }
+    .gradient{
+      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .lead,.muted{
+      color:var(--muted);
+      line-height:1.75;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .item{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+      margin-top:12px;
+    }
+    .item strong{display:block;margin-bottom:6px}
+    .contact-box{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      justify-content:center;
+      height:100%;
+    }
+    .contact-card{
+      padding:18px;
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(118,242,188,0.12), rgba(122,174,255,0.12));
+      border:1px solid rgba(255,255,255,0.12);
+    }
+    .contact-card a{
+      color:#fff;
+      word-break:break-word;
+    }
+    .footer{
+      margin-top:24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    @media (max-width: 860px){
+      .hero,.grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .links{width:100%}
+      .links a{flex:1 1 calc(50% - 10px);text-align:center}
+    }
+  </style>
 </head>
 <body>
-<div class="card">
-<h1>Zovada Support</h1>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo">Z</div>
+        <div>Zovada Support</div>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="support.html">Support</a>
+        <a href="marketing.html">Marketing</a>
+      </div>
+    </nav>
 
-<p>
-If you experience any issues, have suggestions, or would like to report a bug,
-please contact us directly.
-</p>
+    <section class="hero">
+      <div class="card">
+        <h1><span class="gradient">Support</span> for Zovada</h1>
+        <p class="lead">
+          Thank you for using <strong>Zovada</strong>. This support page is provided by
+          <strong>Built Fitout Developers</strong> to help users and reviewers easily contact the developer.
+        </p>
 
-<p class="email">rustlebaldin81@gmail.com</p>
+        <div class="item">
+          <strong>How to contact support</strong>
+          <span class="muted">
+            For app questions, technical issues, feedback, or general communication,
+            please contact the developer by email.
+          </span>
+        </div>
 
-<p>
-We aim to respond as quickly as possible and continuously improve the app experience.
-</p>
+        <div class="item">
+          <strong>What you can write about</strong>
+          <span class="muted">
+            Bug reports, feature suggestions, store listing questions, app clarification,
+            or other support requests related to Zovada.
+          </span>
+        </div>
+      </div>
 
-<p>
-Your feedback helps shape the future of Zovada.
-</p>
+      <div class="card contact-box">
+        <div class="contact-card">
+          <strong>Developer Name</strong>
+          <div class="muted">Built Fitout Developers</div>
+        </div>
 
-</div>
+        <div class="contact-card">
+          <strong>Support Email</strong>
+          <div><a href="mailto:rustlebaldin81@gmail.com">rustlebaldin81@gmail.com</a></div>
+        </div>
+
+        <div class="contact-card">
+          <strong>Application</strong>
+          <div class="muted">Zovada</div>
+        </div>
+
+        <a class="button" href="mailto:rustlebaldin81@gmail.com?subject=Zovada%20Support%20Request">Send Support Email</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Support principles</h2>
+        <div class="item">
+          <strong>Open communication</strong>
+          <span class="muted">
+            The goal is to maintain a clear and accessible support path for every user.
+          </span>
+        </div>
+        <div class="item">
+          <strong>Respect for users</strong>
+          <span class="muted">
+            Questions and feedback are valuable and help improve the app over time.
+          </span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Transparency</h2>
+        <div class="item">
+          <strong>Public support page</strong>
+          <span class="muted">
+            This page exists to make the developer account easier to verify and easier to contact.
+          </span>
+        </div>
+        <div class="item">
+          <strong>Linked pages</strong>
+          <span class="muted">
+            You can also review the Privacy Policy and Marketing page for more information about the project.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © 2026 Built Fitout Developers — Zovada Support
+    </div>
+  </div>
 </body>
 </html>
