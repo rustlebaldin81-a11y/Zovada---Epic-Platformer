@@ -1,86 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Built Fitout Developers | Zovada</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-color:#fff;
-min-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:20px;
-}
-.container{
-max-width:900px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:40px;
-box-shadow:0 8px 32px rgba(0,0,0,0.4);
-animation:fadeIn 1.2s ease-in-out;
-}
-h1{
-font-size:2.5rem;
-margin-bottom:10px;
-background:linear-gradient(90deg,#00f5a0,#00d9f5);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-h2{margin-bottom:20px;font-weight:300}
-p{margin-bottom:20px;line-height:1.6;color:#e0e0e0}
-a.button{
-display:inline-block;
-margin:10px;
-padding:12px 25px;
-border-radius:30px;
-text-decoration:none;
-color:#fff;
-background:linear-gradient(90deg,#00c6ff,#0072ff);
-transition:0.3s;
-}
-a.button:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px rgba(0,198,255,0.7);
-}
-footer{
-margin-top:30px;
-font-size:0.9rem;
-color:#aaa;
-}
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
-@media(max-width:600px){
-h1{font-size:1.8rem}
-.container{padding:25px}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zovada | Built Fitout Developers</title>
+  <meta name="description" content="Official developer and app page for Zovada by Built Fitout Developers." />
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0f1d33;
+      --card:rgba(255,255,255,0.08);
+      --stroke:rgba(255,255,255,0.14);
+      --text:#edf4ff;
+      --muted:#b6c6e3;
+      --accent:#79f2c0;
+      --accent2:#67a8ff;
+      --accent3:#d88cff;
+      --shadow:0 20px 60px rgba(0,0,0,0.35);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(121,242,192,0.18), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(103,168,255,0.2), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(216,140,255,0.18), transparent 25%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+      pointer-events:none;
+    }
+
+    .orb{
+      position:fixed;
+      border-radius:50%;
+      filter:blur(40px);
+      opacity:.35;
+      pointer-events:none;
+      animation:float 12s ease-in-out infinite;
+    }
+    .orb.one{width:220px;height:220px;background:var(--accent);top:8%;left:-50px}
+    .orb.two{width:260px;height:260px;background:var(--accent2);top:50%;right:-80px;animation-delay:-4s}
+    .orb.three{width:200px;height:200px;background:var(--accent3);bottom:0;left:30%;animation-delay:-8s}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0) translateX(0)}
+      50%{transform:translateY(-18px) translateX(16px)}
+    }
+
+    .container{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
+
+    header{
+      padding:20px 0 8px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 18px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,0.06);
+      backdrop-filter:blur(14px);
+      border-radius:999px;
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:14px;
+      z-index:10;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:
+        conic-gradient(from 220deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+      display:grid;
+      place-items:center;
+      color:#06111e;
+      font-weight:800;
+      box-shadow:0 10px 28px rgba(121,242,192,0.3);
+      flex:0 0 auto;
+    }
+
+    .brand-text{
+      min-width:0;
+    }
+    .brand-text strong{
+      display:block;
+      font-size:15px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brand-text span{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:flex-end;
+    }
+
+    .nav a, .button{
+      text-decoration:none;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.05);
+      transition:.25s ease;
+      font-size:14px;
+    }
+
+    .nav a:hover, .button:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,0.12);
+      border-color:rgba(255,255,255,0.2);
+    }
+
+    .hero{
+      padding:54px 0 28px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:center;
+    }
+
+    .hero-card, .panel{
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      backdrop-filter:blur(16px);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card{
+      padding:32px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.12);
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:clamp(2.2rem, 6vw, 4.4rem);
+      line-height:1;
+      margin:0 0 16px;
+      letter-spacing:-0.03em;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:clamp(1rem, 2.4vw, 1.1rem);
+      line-height:1.75;
+      max-width:60ch;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .button.primary{
+      background:linear-gradient(135deg, rgba(121,242,192,0.22), rgba(103,168,255,0.22));
+      border-color:rgba(121,242,192,0.35);
+    }
+
+    .stats{
+      display:grid;
+      gap:16px;
+      padding:24px;
+    }
+
+    .stat{
+      padding:18px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat b{
+      display:block;
+      font-size:1.35rem;
+      margin-bottom:6px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      line-height:1.5;
+      font-size:.95rem;
+    }
+
+    .section{
+      padding:18px 0 28px;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .section-title h2{
+      margin:0;
+      font-size:clamp(1.5rem, 4vw, 2.2rem);
+      letter-spacing:-0.03em;
+    }
+
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      max-width:44ch;
+      line-height:1.6;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      padding:22px;
+      border-radius:24px;
+      background:var(--card);
+      border:1px solid var(--stroke);
+      backdrop-filter:blur(14px);
+      box-shadow:var(--shadow);
+      transition:transform .25s ease, border-color .25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(121,242,192,0.28);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:auto -20% -60% auto;
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(121,242,192,0.28), transparent 68%);
+      pointer-events:none;
+    }
+
+    .card h3{
+      margin:10px 0 10px;
+      font-size:1.1rem;
+    }
+
+    .card p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.98rem;
+      margin:0 0 16px;
+    }
+
+    .chip{
+      display:inline-block;
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.1);
+      font-size:12px;
+      color:#dfe9ff;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .info-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .info-item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.09);
+    }
+
+    .dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      margin-top:7px;
+      flex:0 0 auto;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 0 6px rgba(121,242,192,0.09);
+    }
+
+    .info-item strong{
+      display:block;
+      margin-bottom:5px;
+    }
+
+    .info-item span, .info-item a{
+      color:var(--muted);
+      word-break:break-word;
+    }
+
+    footer{
+      padding:34px 0 54px;
+      color:var(--muted);
+      text-align:center;
+      font-size:.95rem;
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    @media (max-width: 900px){
+      .hero,
+      .cards,
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        border-radius:24px;
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .nav-links{
+        width:100%;
+        justify-content:flex-start;
+      }
+
+      .hero-card{
+        padding:24px;
+      }
+
+      .stats{
+        padding:18px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .container{width:min(100% - 20px, 1120px)}
+      .nav a, .button{width:100%; text-align:center}
+      .actions{flex-direction:column}
+      .nav-links{display:grid; grid-template-columns:1fr 1fr; width:100%}
+      .nav-links a:last-child{grid-column:1 / -1}
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<h1>Built Fitout Developers</h1>
-<h2>Creator of Zovada</h2>
-<p>
-Welcome to the official developer page.  
-We are committed to transparency, quality, and long-term value creation.  
-Zovada is designed with simplicity, performance, and user experience in mind.
-</p>
-<a href="privacy-policy.html" class="button">Privacy Policy</a>
-<a href="support.html" class="button">Support</a>
-<a href="marketing.html" class="button">About & Vision</a>
-<footer>
-Contact: rustlebaldin81@gmail.com<br>
-© 2026 Built Fitout Developers
-</footer>
-</div>
+  <div class="grid-bg"></div>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <div class="container">
+    <header>
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo">Z</div>
+          <div class="brand-text">
+            <strong>Zovada</strong>
+            <span>Built Fitout Developers</span>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="support.html">Support</a>
+          <a href="marketing.html">Marketing</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Official app presentation page</div>
+        <h1>
+          Meet <span class="gradient">Zovada</span>
+        </h1>
+        <p class="lead">
+          Welcome to the official page for <strong>Zovada</strong>, developed by
+          <strong>Built Fitout Developers</strong>. This website is designed to give
+          users and Google Play moderators a transparent, clear, and trustworthy view
+          of the developer profile, app identity, support contact, and privacy approach.
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href="privacy.html">Read Privacy Policy</a>
+          <a class="button" href="support.html">Open Support Page</a>
+          <a class="button" href="marketing.html">View Marketing Page</a>
+        </div>
+      </div>
+
+      <div class="panel stats">
+        <div class="stat">
+          <b>Developer</b>
+          <span>Built Fitout Developers</span>
+        </div>
+        <div class="stat">
+          <b>Application</b>
+          <span>Zovada</span>
+        </div>
+        <div class="stat">
+          <b>Contact Account</b>
+          <span>rustlebaldin81@gmail.com</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>Clear and open information</h2>
+        <p>
+          This page is intentionally simple to verify, yet visually distinct. It helps
+          visitors quickly understand who develops the app and where to find essential policies and support.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <span class="chip">Transparency</span>
+          <h3>Developer identity</h3>
+          <p>
+            This website openly identifies the app name, developer name, and support
+            contact so users and reviewers can easily verify the account behind the app.
+          </p>
+          <a class="button" href="index.html">Main Page</a>
+        </article>
+
+        <article class="card">
+          <span class="chip">Privacy</span>
+          <h3>Data policy</h3>
+          <p>
+            Zovada does not collect, store, or share personal data. The full privacy
+            statement is available on a dedicated page for clarity and review purposes.
+          </p>
+          <a class="button" href="privacy.html">Open Policy</a>
+        </article>
+
+        <article class="card">
+          <span class="chip">Support</span>
+          <h3>User communication</h3>
+          <p>
+            A separate support page is available so users can easily contact the
+            developer regarding questions, feedback, or technical assistance.
+          </p>
+          <a class="button" href="support.html">Get Support</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>Developer and app details</h2>
+        <p>
+          These details are provided to present a trustworthy and straightforward overview
+          of the application and the developer account.
+        </p>
+      </div>
+
+      <div class="info-grid">
+        <div class="card">
+          <h3>Developer Profile</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <strong>Developer Name</strong>
+                <span>Built Fitout Developers</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <strong>Developer Contact</strong>
+                <a href="mailto:rustlebaldin81@gmail.com">rustlebaldin81@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <strong>Purpose of this Website</strong>
+                <span>
+                  To provide a clear public presence for the developer account and its application.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>App Overview</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <strong>App Name</strong>
+                <span>Zovada</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <strong>Current Focus</strong>
+                <span>
+                  Honest presentation, user trust, and a clean information structure for users and moderators.
+                </span>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <strong>Pages Available</strong>
+                <span>Home, Privacy Policy, Support, Marketing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 Built Fitout Developers — Official page for Zovada</div>
+      <div class="footer-links">
+        <a class="button" href="privacy.html">Privacy Policy</a>
+        <a class="button" href="support.html">Support</a>
+        <a class="button" href="marketing.html">Marketing</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card, .hero-card, .panel');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const rx = ((y / rect.height) - 0.5) * -5;
+        const ry = ((x / rect.width) - 0.5) * 5;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  </script>
 </body>
 </html>
